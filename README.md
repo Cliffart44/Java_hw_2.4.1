@@ -1,0 +1,1 @@
+### [Решение](https://github.com/Cliffart44/Java_hw_2.4.1) => [домашнего задания](https://github.com/netology-code/javaqa-homeworks/tree/master/params#%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B0-1---%D1%81%D1%82%D0%B0%D1%82%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0)
