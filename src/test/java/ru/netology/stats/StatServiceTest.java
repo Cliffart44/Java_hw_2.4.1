@@ -1,6 +1,10 @@
 package ru.netology.stats;
 
+import org.apache.commons.beanutils.converters.IntegerArrayConverter;
+import org.apache.commons.beanutils.converters.IntegerConverter;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.converter.ArgumentConverter;
+import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -252,7 +256,6 @@ class StatServiceTest {
         salesStats[9] = october;
         salesStats[10] = november;
         salesStats[11] = december;
-
 
         StatService service = new StatService();
         int expected = 8;
