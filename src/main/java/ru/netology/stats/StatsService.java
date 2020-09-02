@@ -1,8 +1,9 @@
 package ru.netology.stats;
 
-class StatService {
+public class StatsService {
     /* Продажи суммарно */
-    public static int salesSum(int[] salesStats) {
+    public static int salesSum() {
+        int[] salesStats = salesStats();
         int sum = 0;
         for (int num : salesStats) {
             sum = num + sum;
@@ -11,15 +12,17 @@ class StatService {
     }
 
     /* Продажи средне */
-    public static float salesAverage(int[] salesStats) {
-        float sum = salesSum(salesStats);
+    public static float salesAverage() {
+        int[] salesStats = salesStats();
+        float sum = salesSum();
         float avg = sum / salesStats.length;
         return avg;
     }
 
     /* Месяц продажи максимум */
-    public static int salesMaximumMonth(int[] salesStats) {
-        int max = salesMaximum(salesStats);
+    public static int salesMaximumMonth() {
+        int[] salesStats = salesStats();
+        int max = salesMaximum();
         int month = 0;
         for (int i = 0; i < salesStats.length; i++) {
             if (salesStats[i] == max) {
@@ -30,8 +33,9 @@ class StatService {
     }
 
     /* Месяц продажи минимум*/
-    public static int salesMinimumMonth(int[] salesStats) {
-        int min = salesMinimum(salesStats);
+    public static int salesMinimumMonth() {
+        int[] salesStats = salesStats();
+        int min = salesMinimum();
         int month = 0;
         for (int i = 0; i < salesStats.length; i++) {
             if (salesStats[i] == min) {
@@ -42,8 +46,9 @@ class StatService {
     }
 
     /* Количество месяцев продаж ниже среднего */
-    public static int salesBelowAverage(int[] salesStats) {
-        float avg = salesAverage(salesStats);
+    public static int salesBelowAverage() {
+        int[] salesStats = salesStats();
+        float avg = salesAverage();
         int months = 0;
         for (int num : salesStats) {
             if (num < avg) {
@@ -54,8 +59,9 @@ class StatService {
     }
 
     /* Количество месяцев продаж выше среднего */
-    public static int salesAboveAverage(int[] salesStats) {
-        float avg = salesAverage(salesStats);
+    public static int salesAboveAverage() {
+        int[] salesStats = salesStats();
+        float avg = salesAverage();
         int months = 0;
         for (int num : salesStats) {
             if (num > avg) {
@@ -69,8 +75,15 @@ class StatService {
 
     /* Вспомогательные и дополнительные методы */
 
+    /* Данные продаж */
+    public static int[] salesStats() {
+        int[] salesStats = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        return salesStats;
+    }
+
     /* Продажа максимум */
-    public static int salesMaximum(int[] salesStats) {
+    public static int salesMaximum() {
+        int[] salesStats = salesStats();
         int max = salesStats[0];
         for (int num : salesStats) {
             if (num > max) {
@@ -81,7 +94,8 @@ class StatService {
     }
 
     /* Продажа минимум */
-    public static int salesMinimum(int[] salesStats) {
+    public static int salesMinimum() {
+        int[] salesStats = salesStats();
         int min = salesStats[0];
         for (int num : salesStats) {
             if (num < min) {
@@ -92,8 +106,9 @@ class StatService {
     }
 
     /* Месяц продажи минимум способ 2 */
-    public static int salesMinimumMonthWay2(int[] salesStats) {
-        int min = salesMinimum(salesStats);
+    public static int salesMinimumMonthWay2() {
+        int[] salesStats = salesStats();
+        int min = salesMinimum();
         for (int i = salesStats.length - 1; i > 0; i--)
             if (salesStats[i] == min)
                 return i + 1;
@@ -101,8 +116,9 @@ class StatService {
     }
 
     /* Месяц продажи максимум способ 2 */
-    public static int salesMaximumMonthWay2(int[] salesStats) {
-        int max = salesMaximum(salesStats);
+    public static int salesMaximumMonthWay2() {
+        int[] salesStats = salesStats();
+        int max = salesMaximum();
         for (int i = salesStats.length - 1; i > 0; i--)
             if (salesStats[i] == max)
                 return i + 1;
