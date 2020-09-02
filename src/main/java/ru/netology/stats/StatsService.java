@@ -2,7 +2,7 @@ package ru.netology.stats;
 
 class StatService<salesStats> {
     /* Продажи суммарно */
-    public static int SalesSum(int[] salesStats) {
+    public static int salesSum(int[] salesStats) {
         int sum = 0;
         for (int num : salesStats) {
             sum = num + sum;
@@ -11,37 +11,15 @@ class StatService<salesStats> {
     }
 
     /* Продажи средне */
-    public static float SalesAverage(int[] salesStats) {
-        StatService service = new StatService();
-        float sum = service.SalesSum(salesStats);
+    public static float salesAverage(int[] salesStats) {
+        float sum = salesSum(salesStats);
         float avg = sum / salesStats.length;
         return avg;
     }
 
     /* Месяц продажи максимум */
-    public static int SalesMaximumMonth(int[] salesStats) {
-        StatService service = new StatService();
-        int max = SalesMaximum(salesStats);
-        for (int i = salesStats.length - 1; i > 0; i--)
-            if (salesStats[i] == max)
-                return i + 1;
-        return -1;
-    }
-
-    /* Месяц продажи минимум */
-    public static int SalesMinimumMonth(int[] salesStats) {
-        StatService service = new StatService();
-        int min = SalesMinimum(salesStats);
-        for (int i = salesStats.length - 1; i > 0; i--)
-            if (salesStats[i] == min)
-                return i + 1;
-        return -1;
-    }
-
-    /* Месяц продажи максимум способ 2 */
-    public static int SalesMaximumMonth2(int[] salesStats) {
-        StatService service = new StatService();
-        int max = SalesMaximum(salesStats);
+    public static int salesMaximumMonth(int[] salesStats) {
+        int max = salesMaximum(salesStats);
         int month = 0;
         for (int i = 0; i < salesStats.length; i++) {
             if (salesStats[i] == max) {
@@ -51,10 +29,9 @@ class StatService<salesStats> {
         return month + 1;
     }
 
-    /* Месяц продажи минимум способ 2 */
-    public static int SalesMinimumMonth2(int[] salesStats) {
-        StatService service = new StatService();
-        int min = SalesMinimum(salesStats);
+    /* Месяц продажи минимум*/
+    public static int salesMinimumMonth(int[] salesStats) {
+        int min = salesMinimum(salesStats);
         int month = 0;
         for (int i = 0; i < salesStats.length; i++) {
             if (salesStats[i] == min) {
@@ -65,9 +42,8 @@ class StatService<salesStats> {
     }
 
     /* Количество месяцев продаж ниже среднего */
-    public static int SalesBelowAverage(int[] salesStats) {
-        StatService service = new StatService();
-        float avg = SalesAverage(salesStats);
+    public static int salesBelowAverage(int[] salesStats) {
+        float avg = salesAverage(salesStats);
         int months = 0;
         for (int num : salesStats) {
             if (num < avg) {
@@ -78,9 +54,8 @@ class StatService<salesStats> {
     }
 
     /* Количество месяцев продаж выше среднего */
-    public static int SalesAboveAverage(int[] salesStats) {
-        StatService service = new StatService();
-        float avg = SalesAverage(salesStats);
+    public static int salesAboveAverage(int[] salesStats) {
+        float avg = salesAverage(salesStats);
         int months = 0;
         for (int num : salesStats) {
             if (num > avg) {
@@ -90,10 +65,12 @@ class StatService<salesStats> {
         return months;
     }
 
-    /* Вспомогательные методы */
+    /* --------------------------------------- */
+
+    /* Вспомогательные и дополнительные методы */
 
     /* Продажа максимум */
-    public static int SalesMaximum(int[] salesStats) {
+    public static int salesMaximum(int[] salesStats) {
         int max = salesStats[0];
         for (int num : salesStats) {
             if (num > max) {
@@ -104,7 +81,7 @@ class StatService<salesStats> {
     }
 
     /* Продажа минимум */
-    public static int SalesMinimum(int[] salesStats) {
+    public static int salesMinimum(int[] salesStats) {
         int min = salesStats[0];
         for (int num : salesStats) {
             if (num < min) {
@@ -112,5 +89,23 @@ class StatService<salesStats> {
             }
         }
         return min;
+    }
+
+    /* Месяц продажи минимум способ 2 */
+    public static int salesMinimumMonthWay2(int[] salesStats) {
+        int min = salesMinimum(salesStats);
+        for (int i = salesStats.length - 1; i > 0; i--)
+            if (salesStats[i] == min)
+                return i + 1;
+        return 1;
+    }
+
+    /* Месяц продажи максимум способ 2 */
+    public static int salesMaximumMonthWay2(int[] salesStats) {
+        int max = salesMaximum(salesStats);
+        for (int i = salesStats.length - 1; i > 0; i--)
+            if (salesStats[i] == max)
+                return i + 1;
+        return 1;
     }
 }

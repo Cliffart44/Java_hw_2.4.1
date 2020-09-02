@@ -1,9 +1,7 @@
 package ru.netology.stats;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,7 +27,7 @@ class StatServiceTest {
 
         StatService service = new StatService();
         int expected = 180;
-        int actual = service.SalesSum(salesStats);
+        int actual = service.salesSum(salesStats);
         assertEquals(expected, actual);
     }
 
@@ -54,7 +52,7 @@ class StatServiceTest {
 
         StatService service = new StatService();
         float expected = 15;
-        float actual = service.SalesAverage(salesStats);
+        float actual = service.salesAverage(salesStats);
         assertEquals(expected, actual);
     }
 
@@ -79,7 +77,7 @@ class StatServiceTest {
 
         StatService service = new StatService();
         int expected = 8;
-        int actual = service.SalesMaximumMonth(salesStats);
+        int actual = service.salesMaximumMonth(salesStats);
         assertEquals(expected, actual);
     }
 
@@ -104,57 +102,7 @@ class StatServiceTest {
 
         StatService service = new StatService();
         int expected = 9;
-        int actual = service.SalesMinimumMonth(salesStats);
-        assertEquals(expected, actual);
-    }
-
-    /* Месяц продажи максимум способ 2 */
-    @ParameterizedTest
-    @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
-    void shouldSpecifyMaximumSalesMonth2(int january, int february, int march, int april, int may, int june, int july, int august, int september, int october, int november, int december) {
-        int[] salesStats = new int[12];
-        salesStats[0] = january;
-        salesStats[1] = february;
-        salesStats[2] = march;
-        salesStats[3] = april;
-        salesStats[4] = may;
-        salesStats[5] = june;
-        salesStats[6] = july;
-        salesStats[7] = august;
-        salesStats[8] = september;
-        salesStats[9] = october;
-        salesStats[10] = november;
-        salesStats[11] = december;
-
-
-        StatService service = new StatService();
-        int expected = 8;
-        int actual = service.SalesMaximumMonth2(salesStats);
-        assertEquals(expected, actual);
-    }
-
-    /* Месяц продажи минимум способ 2 */
-    @ParameterizedTest
-    @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
-    void shouldSpecifyMinimumSalesMonth2(int january, int february, int march, int april, int may, int june, int july, int august, int september, int october, int november, int december) {
-        int[] salesStats = new int[12];
-        salesStats[0] = january;
-        salesStats[1] = february;
-        salesStats[2] = march;
-        salesStats[3] = april;
-        salesStats[4] = may;
-        salesStats[5] = june;
-        salesStats[6] = july;
-        salesStats[7] = august;
-        salesStats[8] = september;
-        salesStats[9] = october;
-        salesStats[10] = november;
-        salesStats[11] = december;
-
-
-        StatService service = new StatService();
-        int expected = 9;
-        int actual = service.SalesMinimumMonth2(salesStats);
+        int actual = service.salesMinimumMonth(salesStats);
         assertEquals(expected, actual);
     }
 
@@ -179,7 +127,7 @@ class StatServiceTest {
 
         StatService service = new StatService();
         int expected = 5;
-        int actual = service.SalesBelowAverage(salesStats);
+        int actual = service.salesBelowAverage(salesStats);
         assertEquals(expected, actual);
     }
 
@@ -204,11 +152,13 @@ class StatServiceTest {
 
         StatService service = new StatService();
         int expected = 5;
-        int actual = service.SalesAboveAverage(salesStats);
+        int actual = service.salesAboveAverage(salesStats);
         assertEquals(expected, actual);
     }
 
-    /* Вспомогательные тесты */
+    /* --------------------------------------- */
+
+    /* Вспомогательные и дополнительные тесты */
 
     /* Продажа максимум */
     @ParameterizedTest
@@ -231,7 +181,7 @@ class StatServiceTest {
 
         StatService service = new StatService();
         int expected = 20;
-        int actual = service.SalesMaximum(salesStats);
+        int actual = service.salesMaximum(salesStats);
         assertEquals(expected, actual);
     }
 
@@ -256,7 +206,58 @@ class StatServiceTest {
 
         StatService service = new StatService();
         int expected = 7;
-        int actual = service.SalesMinimum(salesStats);
+        int actual = service.salesMinimum(salesStats);
         assertEquals(expected, actual);
     }
+
+    /* Месяц продажи минимум способ 2 */
+    @ParameterizedTest
+    @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
+    void shouldSpecifyMinimumSalesMonthWay2(int january, int february, int march, int april, int may, int june, int july, int august, int september, int october, int november, int december) {
+        int[] salesStats = new int[12];
+        salesStats[0] = january;
+        salesStats[1] = february;
+        salesStats[2] = march;
+        salesStats[3] = april;
+        salesStats[4] = may;
+        salesStats[5] = june;
+        salesStats[6] = july;
+        salesStats[7] = august;
+        salesStats[8] = september;
+        salesStats[9] = october;
+        salesStats[10] = november;
+        salesStats[11] = december;
+
+
+        StatService service = new StatService();
+        int expected = 9;
+        int actual = service.salesMinimumMonthWay2(salesStats);
+        assertEquals(expected, actual);
+    }
+
+    /* Месяц продажи максимум способ 2 */
+    @ParameterizedTest
+    @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
+    void shouldSpecifyMaximumSalesMonthWay2(int january, int february, int march, int april, int may, int june, int july, int august, int september, int october, int november, int december) {
+        int[] salesStats = new int[12];
+        salesStats[0] = january;
+        salesStats[1] = february;
+        salesStats[2] = march;
+        salesStats[3] = april;
+        salesStats[4] = may;
+        salesStats[5] = june;
+        salesStats[6] = july;
+        salesStats[7] = august;
+        salesStats[8] = september;
+        salesStats[9] = october;
+        salesStats[10] = november;
+        salesStats[11] = december;
+
+
+        StatService service = new StatService();
+        int expected = 8;
+        int actual = service.salesMaximumMonthWay2(salesStats);
+        assertEquals(expected, actual);
+    }
+
 }
