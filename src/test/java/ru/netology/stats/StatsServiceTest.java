@@ -98,4 +98,13 @@ class StatsServiceTest {
         int actual = service.salesMaximumMonthWay2();
         assertEquals(expected, actual);
     }
+
+    /* Месяц продажи максимум способ 3 */
+    @Test
+    void shouldSpecifyMaximumSalesMonthWay3() {
+        StatsService service = new StatsService();
+        int expected = 8;
+        int actual = service.salesMaximumMonthWay3();
+        assertEquals(expected, actual);
+    }
 }

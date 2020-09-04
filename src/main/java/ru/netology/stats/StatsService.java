@@ -6,7 +6,7 @@ public class StatsService {
         int[] salesStats = salesStats();
         int sum = 0;
         for (int num : salesStats) {
-            sum = num + sum;
+            sum += num;
         }
         return sum;
     }
@@ -123,5 +123,21 @@ public class StatsService {
             if (salesStats[i] == max)
                 return i + 1;
         return 1;
+    }
+
+    /* Месяц продажи максимум способ 3 */
+    public static int salesMaximumMonthWay3() {
+        int[] salesStats = salesStats();
+        int max = salesStats[0];
+        int monthCounter = 0;
+        int month = 0;
+        for (int num : salesStats) {
+            monthCounter++;
+            if (max <= num) {
+                max = num;
+                month = monthCounter;
+            }
+        }
+        return month;
     }
 }
