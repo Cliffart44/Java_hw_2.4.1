@@ -1,15 +1,11 @@
 package ru.netology.stats;
 
-import org.apache.commons.beanutils.converters.IntegerArrayConverter;
-import org.apache.commons.beanutils.converters.IntegerConverter;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.converter.ArgumentConverter;
-import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class StatServiceTest {
+class StatsServiceTest {
     /* Продажи суммарно */
     @ParameterizedTest
     @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
@@ -29,7 +25,7 @@ class StatServiceTest {
         salesStats[11] = december;
 
 
-        StatService service = new StatService();
+        StatsService service = new StatsService();
         int expected = 180;
         int actual = service.salesSum(salesStats);
         assertEquals(expected, actual);
@@ -54,7 +50,7 @@ class StatServiceTest {
         salesStats[11] = december;
 
 
-        StatService service = new StatService();
+        StatsService service = new StatsService();
         float expected = 15;
         float actual = service.salesAverage(salesStats);
         assertEquals(expected, actual);
@@ -79,7 +75,7 @@ class StatServiceTest {
         salesStats[11] = december;
 
 
-        StatService service = new StatService();
+        StatsService service = new StatsService();
         int expected = 8;
         int actual = service.salesMaximumMonth(salesStats);
         assertEquals(expected, actual);
@@ -104,7 +100,7 @@ class StatServiceTest {
         salesStats[11] = december;
 
 
-        StatService service = new StatService();
+        StatsService service = new StatsService();
         int expected = 9;
         int actual = service.salesMinimumMonth(salesStats);
         assertEquals(expected, actual);
@@ -129,7 +125,7 @@ class StatServiceTest {
         salesStats[11] = december;
 
 
-        StatService service = new StatService();
+        StatsService service = new StatsService();
         int expected = 5;
         int actual = service.salesBelowAverage(salesStats);
         assertEquals(expected, actual);
@@ -154,7 +150,7 @@ class StatServiceTest {
         salesStats[11] = december;
 
 
-        StatService service = new StatService();
+        StatsService service = new StatsService();
         int expected = 5;
         int actual = service.salesAboveAverage(salesStats);
         assertEquals(expected, actual);
@@ -183,7 +179,7 @@ class StatServiceTest {
         salesStats[11] = december;
 
 
-        StatService service = new StatService();
+        StatsService service = new StatsService();
         int expected = 20;
         int actual = service.salesMaximum(salesStats);
         assertEquals(expected, actual);
@@ -208,7 +204,7 @@ class StatServiceTest {
         salesStats[11] = december;
 
 
-        StatService service = new StatService();
+        StatsService service = new StatsService();
         int expected = 7;
         int actual = service.salesMinimum(salesStats);
         assertEquals(expected, actual);
@@ -233,7 +229,7 @@ class StatServiceTest {
         salesStats[11] = december;
 
 
-        StatService service = new StatService();
+        StatsService service = new StatsService();
         int expected = 9;
         int actual = service.salesMinimumMonthWay2(salesStats);
         assertEquals(expected, actual);
@@ -257,7 +253,7 @@ class StatServiceTest {
         salesStats[10] = november;
         salesStats[11] = december;
 
-        StatService service = new StatService();
+        StatsService service = new StatsService();
         int expected = 8;
         int actual = service.salesMaximumMonthWay2(salesStats);
         assertEquals(expected, actual);

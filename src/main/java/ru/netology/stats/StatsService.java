@@ -1,6 +1,6 @@
 package ru.netology.stats;
 
-class StatService {
+public class StatsService {
     /* Продажи суммарно */
     public static int salesSum(int[] salesStats) {
         int sum = 0;
